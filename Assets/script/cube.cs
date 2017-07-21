@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class cube : MonoBehaviour {
 	// 生成したいPrefab
@@ -14,8 +15,12 @@ public class cube : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		// マウス入力で左クリックをした瞬間
-		if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButton(0))
+        {
+            SceneManager.LoadScene("Game");
+        }
+        // マウス入力で左クリックをした瞬間
+        if (Input.GetMouseButtonDown(0)) {
 			clickPosition = Input.mousePosition;
 			clickPosition.z = 10f;
 			GameObject cube = (GameObject)Resources.Load ("Prefab/Cube");
