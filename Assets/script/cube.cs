@@ -15,10 +15,7 @@ public class cube : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetMouseButton(0))
-        {
-            SceneManager.LoadScene("Game");
-        }
+
         // マウス入力で左クリックをした瞬間
         if (Input.GetMouseButtonDown(0)) {
 			clickPosition = Input.mousePosition;
