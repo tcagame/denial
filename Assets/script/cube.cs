@@ -1,28 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class cube : MonoBehaviour {
-	// 生成したいPrefab
-	static public GameObject Prefab;
-	// クリックした位置座標
-	private Vector3 clickPosition;
-	// Use this for initialization
-	void Start () {
+public class Cube : MonoBehaviour {
 
-	}
+    private Vector3 m_mouseDownPosition;
+    // Use this for initialization
+    void Start () {
+        m_mouseDownPosition = transform.position;
+    }
 
-	// Update is called once per frame
-	void Update () {
-
-        // マウス入力で左クリックをした瞬間
-        if (Input.GetMouseButtonDown(0)) {
-			clickPosition = Input.mousePosition;
-			clickPosition.z = 10f;
-			GameObject cube = (GameObject)Resources.Load ("Prefab/Cube");
-			// ScreenToWorldPoint(位置(Vector3))：スクリーン座標をワールド座標に変換する
-			Instantiate(cube, Camera.main.ScreenToWorldPoint(clickPosition), cube.transform.rotation);
-		}
-	}
+    void OnMouseDrag()
+    {
+        // マウスクリックした場所をワールド座標に変化して、
+        // 初期位置とマウスクリック位置の中間にオブジェクトを配置。
+        // オブジェクトのスケールを初期位置とマウスクリックの距離に。
+        // オブジェクトの向きをマウスクリックした位置に。
+    
+        Vector3 inputPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 9.5f);
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(inputPosition);
+        Vector3 mediumPos = (mousePos - m_mouseDownPosition) / 2.0f + m_mouseDownPosition;
+        float dist = Vector3.Distance(mousePos, m_mouseDownPosition);
+    
+        transform.position = mediumPos;
+        transform.localScale = new Vector3(1.0f, 1.0f, dist);
+        transform.LookAt(mousePos);
+    }
 }
