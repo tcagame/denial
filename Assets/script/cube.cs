@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cube : MonoBehaviour {
+public class cube : MonoBehaviour {
 
     private Vector3 m_mouseDownPosition;
     // Use this for initialization
@@ -10,13 +10,8 @@ public class Cube : MonoBehaviour {
         m_mouseDownPosition = transform.position;
     }
 
-    void OnMouseOver()
-    {
-        // マウスクリックした場所をワールド座標に変化して、
-        // 初期位置とマウスクリック位置の中間にオブジェクトを配置。
-        // オブジェクトのスケールを初期位置とマウスクリックの距離に。
-        // オブジェクトの向きをマウスクリックした位置に。
-
+	void OnMouseOver( ) {
+		Debug.Log ("OnMouse");
         if (Input.GetMouseButton(0))
         {
             Vector3 inputPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 9.5f);
