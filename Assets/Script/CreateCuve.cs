@@ -23,7 +23,7 @@ public class CreateCuve : MonoBehaviour
             clickPosition.z = 10f;
             // オブジェクト生成 : オブジェクト(GameObject), 位置(Vector3), 角度(Quaternion)
             // ScreenToWorldPoint(位置(Vector3))：スクリーン座標をワールド座標に変換する
-            cube = (GameObject)Resources.Load("Prefab/belcon");
+            cube = (GameObject)Resources.Load("Prefab/Cube");
             Instantiate(cube, Camera.main.ScreenToWorldPoint(clickPosition), cube.transform.rotation);
         }
     }
