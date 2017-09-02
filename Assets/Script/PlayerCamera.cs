@@ -8,7 +8,7 @@ public class PlayerCamera : MonoBehaviour
     
     void Start()
     {
-        target = GameObject.Find( "yuusya" ).transform;
+        target = GameObject.Find( "Brave" ).transform;
     }
     
     void Update()

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BelcinTest : MonoBehaviour {
+public class BelconTest : MonoBehaviour {
 	public GameObject brave;
 	private Vector3 m_mouseDownPosition;
 	bool click; 
