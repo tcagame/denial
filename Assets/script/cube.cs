@@ -5,6 +5,7 @@ using UnityEngine;
 public class cube : MonoBehaviour {
 
     private Vector3 m_mouseDownPosition;
+
     // Use this for initialization
 	bool click; 
     void Start () {

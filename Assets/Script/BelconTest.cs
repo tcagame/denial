@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BelconTest : MonoBehaviour {
-	public GameObject brave;
+	private GameObject brave;
 	private Vector3 m_mouseDownPosition;
 	bool click; 
 	bool Right;
@@ -12,6 +12,8 @@ public class BelconTest : MonoBehaviour {
 		m_mouseDownPosition = transform.position;
 		click = true;
 		Right = true;
+		brave = GameObject.Find( "Brave" );
+		Debug.Log (brave);
 	}
 
 	void Update( ) {
@@ -39,6 +41,7 @@ public class BelconTest : MonoBehaviour {
 	}
 
 	void OnCollisionStay2D( Collision2D collision ) {
+		Debug.Log ("oaoao");
 		if ( Right ) {
 			Vector2 left = new Vector2 ( brave.transform.position.x + 0.05f, brave.transform.position.y );
 			brave.transform.position = left;
