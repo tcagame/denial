@@ -7,7 +7,7 @@ public class BelconTest : MonoBehaviour {
 	private Vector3 m_mouseDownPosition;
 	bool click; 
 	bool Right;
-	const float DESTROY_TIME = 3.0f;
+	const float DESTROY_TIME = 4.0f;
 	float _time = 0f;
 
 	void Start ( ) {
