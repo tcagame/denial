@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class firstBelcon : MonoBehaviour {
 	private GameObject brave;
-	bool Right;
 
 	// Use this for initialization
 	void Start () {
-		Right = true;
 		brave = GameObject.Find( "Brave" );
 		Debug.Log (brave);
 	}

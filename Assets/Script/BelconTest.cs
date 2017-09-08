@@ -15,7 +15,6 @@ public class BelconTest : MonoBehaviour {
 		click = true;
 		Right = true;
 		brave = GameObject.Find( "Brave" );
-		Debug.Log (brave);
 		_time = 0;
 	}
 
