@@ -6,13 +6,14 @@ public class PlayerCamera : MonoBehaviour
     
     private Transform target;
     
-    void Start()
-    {
+    void Start( ) {
         target = GameObject.Find( "Brave" ).transform;
     }
     
-    void Update()
-    {
+    void Update( ) {
         transform.position = new Vector3(target.position.x, transform.position.y, transform.position.z);
+		if (transform.position.x < 0.0f) {
+			transform.position = new Vector3( 0.0f, transform.position.y, transform.position.z);
+		}
     }
 }
