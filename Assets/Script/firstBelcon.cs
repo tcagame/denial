@@ -19,7 +19,6 @@ public class firstBelcon : MonoBehaviour {
 	}
 
 	void OnCollisionStay( Collision collision ) {
-		Debug.Log ("aa");
 		Vector2 left = new Vector2 ( brave.transform.position.x + 0.05f, brave.transform.position.y );
 		brave.transform.position = left;
 	}
