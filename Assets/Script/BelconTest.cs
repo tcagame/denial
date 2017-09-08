@@ -40,14 +40,8 @@ public class BelconTest : MonoBehaviour {
 		}
 	}
 
-	void OnCollisionStay2D( Collision2D collision ) {
-		Debug.Log ("oaoao");
-		if ( Right ) {
-			Vector2 left = new Vector2 ( brave.transform.position.x + 0.05f, brave.transform.position.y );
-			brave.transform.position = left;
-		} else {
-			Vector2 right = new Vector2 ( brave.transform.position.x - 0.05f, brave.transform.position.y );
-			brave.transform.position = right;
-		}	
+	void OnCollisionStay( Collision collision ) {
+		Vector2 left = new Vector2 ( brave.transform.position.x + 0.05f, brave.transform.position.y );
+		brave.transform.position = left;	
 	}
 }
