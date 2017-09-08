@@ -7,6 +7,8 @@ public class BelconTest : MonoBehaviour {
 	private Vector3 m_mouseDownPosition;
 	bool click; 
 	bool Right;
+	const float DESTROY_TIME = 3.0f;
+	float _time = 0f;
 
 	void Start ( ) {
 		m_mouseDownPosition = transform.position;
@@ -14,6 +16,7 @@ public class BelconTest : MonoBehaviour {
 		Right = true;
 		brave = GameObject.Find( "Brave" );
 		Debug.Log (brave);
+		_time = 0;
 	}
 
 	void Update( ) {
@@ -30,6 +33,10 @@ public class BelconTest : MonoBehaviour {
 				transform.localScale = new Vector3 ( 1.0f, 1.0f, dist );
 				transform.LookAt ( mousePos );
 			}
+		}
+		_time += Time.deltaTime;
+		if( _time > DESTROY_TIME ) {
+			Destroy( gameObject );
 		}
 	}
 	void OnMouseDown( ) {
