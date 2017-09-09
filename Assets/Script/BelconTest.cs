@@ -38,7 +38,7 @@ public class BelconTest : MonoBehaviour {
 		}
 	}
 	void OnCollisionStay( Collision collision ) {
-		Vector2 left = new Vector2 ( brave.transform.position.x + 0.03f, brave.transform.position.y );
+		Vector2 left = new Vector2 ( brave.transform.position.x + 0.07f, brave.transform.position.y );
 		brave.transform.position = left;	
 	}
 }
