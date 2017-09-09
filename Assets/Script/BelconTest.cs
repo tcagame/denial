@@ -10,19 +10,21 @@ public class BelconTest : MonoBehaviour {
 	bool Right;
 	const float DESTROY_TIME = 4.0f;
 	float _time = 0f;
-	Collision collision;
-
+	const int CLEATE_COUNT = 30;
+	private int _count;
 	void Start ( ) {
 		m_mouseDownPosition = transform.position;
 		click = true;
 		click_end = false;
 		brave = GameObject.Find( "Brave" );
 		_time = 0;
+		_count = 0;
 	}
 
 	void Update( ) {
 		if ( click ) {
-			if ( Input.GetMouseButtonUp ( 0 ) || click_end ) {
+			_count++;
+			if ( Input.GetMouseButtonUp ( 0 ) || click_end ||  _count > CLEATE_COUNT ) {
 				click = false;
 			} else {
 				Vector3 inputPosition = new Vector3 ( Input.mousePosition.x, Input.mousePosition.y, 9.5f );
