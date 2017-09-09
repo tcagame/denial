@@ -6,25 +6,22 @@ public class BelconTest : MonoBehaviour {
 	private GameObject brave;
 	private Vector3 m_mouseDownPosition;
 	bool click; 
-	bool click_end;
-	bool Right;
-	const float DESTROY_TIME = 4.0f;
+	bool over_obj;
+	const float DESTROY_TIME = 8.0f;
 	float _time = 0f;
 	const int CLEATE_COUNT = 30;
 	private int _count;
 	void Start ( ) {
 		m_mouseDownPosition = transform.position;
 		click = true;
-		click_end = false;
+		over_obj = false;
 		brave = GameObject.Find( "Brave" );
-		_time = 0;
-		_count = 0;
 	}
 
 	void Update( ) {
 		if ( click ) {
 			_count++;
-			if ( Input.GetMouseButtonUp ( 0 ) || click_end ||  _count > CLEATE_COUNT ) {
+			if ( Input.GetMouseButtonUp ( 0 ) || over_obj ) {
 				click = false;
 			} else {
 				Vector3 inputPosition = new Vector3 ( Input.mousePosition.x, Input.mousePosition.y, 9.5f );
@@ -43,7 +40,7 @@ public class BelconTest : MonoBehaviour {
 		}
 	}
 	void OnCollisionStay( Collision collision ) {
-		click_end = true;
+		over_obj = true;
 		if ( collision.gameObject.tag == "Player" && !click ) {
 			Vector2 left = new Vector2 (brave.transform.position.x + 0.05f, brave.transform.position.y);
 			brave.transform.position = left;	
