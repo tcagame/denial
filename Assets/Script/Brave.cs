@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Brave : MonoBehaviour {
+	[SerializeField] string nextStage;
 
 	// Use this for initialization
 	void Start () {
@@ -17,7 +18,11 @@ public class Brave : MonoBehaviour {
 
 	void OnCollisionStay( Collision collision ) {
 		if (collision.gameObject.name == "boss") {
+<<<<<<< HEAD
+			SceneManager.LoadScene ("nextStage");
+=======
 			SceneManager.LoadScene ("Title");
+>>>>>>> 9bb22a178ba3839407513d64fda387db1489e3f4
 		}
 		if (collision.gameObject.name == "boss2") {
 			SceneManager.LoadScene ("StuffedRoll");
