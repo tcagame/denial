@@ -16,7 +16,7 @@ public class MenuButton : MonoBehaviour {
 	}
 
 	public void PushStart() {
-
+		SceneManager.LoadScene ("Game");
 	}
 
 	public void PushBack() {
