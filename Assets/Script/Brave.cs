@@ -18,11 +18,7 @@ public class Brave : MonoBehaviour {
 
 	void OnCollisionStay( Collision collision ) {
 		if (collision.gameObject.name == "boss") {
-<<<<<<< HEAD
-			SceneManager.LoadScene ("nextStage");
-=======
-			SceneManager.LoadScene ("Title");
->>>>>>> 9bb22a178ba3839407513d64fda387db1489e3f4
+			SceneManager.LoadScene (nextStage);
 		}
 		if (collision.gameObject.name == "boss2") {
 			SceneManager.LoadScene ("StuffedRoll");
