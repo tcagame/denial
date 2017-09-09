@@ -13,7 +13,6 @@ public class BelconTest : MonoBehaviour {
 	void Start ( ) {
 		m_mouseDownPosition = transform.position;
 		click = true;
-		Right = true;
 		brave = GameObject.Find( "Brave" );
 		_time = 0;
 	}
@@ -38,16 +37,8 @@ public class BelconTest : MonoBehaviour {
 			Destroy( gameObject );
 		}
 	}
-	void OnMouseDown( ) {
-		if ( Right ) {
-			Right = false;
-		} else {
-			Right = true;
-		}
-	}
-
 	void OnCollisionStay( Collision collision ) {
-		Vector2 left = new Vector2 ( brave.transform.position.x + 0.05f, brave.transform.position.y );
+		Vector2 left = new Vector2 ( brave.transform.position.x + 0.03f, brave.transform.position.y );
 		brave.transform.position = left;	
 	}
 }

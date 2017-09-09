@@ -8,19 +8,18 @@ using UnityEngine.UI;
 
 public class ButtonAnimSlider : MonoBehaviour
 {
-	[SerializeField] private float _fromX;
-	[SerializeField] private float _toX;
-	[SerializeField] private float _time;
 	[SerializeField] private bool _active = false;
 	[SerializeField] private Button _target;
-	
+	TweenPos posTweem;
+
 
 	/// <summary>
 	/// Buttonクラス取得
 	/// </summary>
-	private void Awake()
+	private void Awake ()
 	{
-		_target = gameObject.GetComponent<Button>();
+		_target = gameObject.GetComponent<Button> ();
+		posTweem = gameObject.GetComponent<TweenPos> ();
 		
 		
 	}
@@ -30,37 +29,31 @@ public class ButtonAnimSlider : MonoBehaviour
 	/// 初期値取得
 	/// AddListener設定
 	/// </summary>
-	void Start () {
+	void Start ()
+	{
 		
-		if (_target != null)
-		{
-
+		if (_target != null) {
+		} else {
+			Destroy (this);
 		}
-		else
-		{
-			Destroy(this);
-		}
-		
-		_target.onClick.AddListener (() =>
-		{
-			if (_active)
-			{
-//				TweenScale.Tween(gameObject, 1.0f, )
 
+		_target.onClick.AddListener (() => {
+			if (_active) {
+				TweenPos.Tween (gameObject, 1.0f, posTweem.from);
 				_active = false;
-			}
-			else
-			{
-//				TweenScale.Tween(gameObject, 1.0f, )
+			} else {
+				TweenPos.Tween (gameObject, 1.0f, posTweem.to);
 				_active = true;
 			}
 			
-		});
+		}
+		);
 		
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
 		
 	}
 }
