@@ -12,6 +12,8 @@ public class GameOver : MonoBehaviour {
 	void Update () {
 	}
 	void OnTriggerEnter(Collider col) {
-		result.SetActive (true);
+		if (col.gameObject.tag == "Player") {
+			result.SetActive (true);
+		}
 	}
 }
