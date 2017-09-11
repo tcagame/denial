@@ -17,7 +17,9 @@ public class firstBelcon : MonoBehaviour {
 	}
 
 	void OnCollisionStay( Collision collision ) {
-		Vector2 left = new Vector2 ( brave.transform.position.x + 0.05f, brave.transform.position.y );
-		brave.transform.position = left;
+		if ( collision.gameObject.tag == "Player" ) {
+			Vector2 left = new Vector2 (brave.transform.position.x + 0.05f, brave.transform.position.y);
+			brave.transform.position = left;	
+		}
 	}
 }
