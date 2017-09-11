@@ -11,6 +11,9 @@ public class TitlLogo : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		transform.position += new Vector3( 0.05f , 0.0f , 0.0f );
+		if ( transform.position.x >= 0.85f  ) {
+			transform.position = new Vector3(  0.85f, transform.position.y, transform.position.z );
+		}
 	}
 }
