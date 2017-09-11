@@ -7,12 +7,10 @@ public class Brave : MonoBehaviour {
 	[SerializeField] string nextStage;
 	[SerializeField] GameObject fade;
 
-<<<<<<< HEAD
 	public GameObject ExploadObj;
 	public GameObject ExploadPos;
-=======
 	Fade _fade;
->>>>>>> 709c0354b453595410290436fb52904eff8622ea
+	bool bom = true;
 
 	// Use this for initialization
 	void Start ( ) {
@@ -26,14 +24,12 @@ public class Brave : MonoBehaviour {
 
 	void OnCollisionStay( Collision collision ) {
 		if (collision.gameObject.name == "boss") {
-<<<<<<< HEAD
-			Instantiate (ExploadObj, ExploadPos.transform.position, Quaternion.identity);
-			fade.gameObject.SetActive (true);
-			StartCoroutine (SceneLoad (1.5f, nextStage));
-=======
-			StartCoroutine (FadeDelay(1.5f, _fade.fadeStart));
-			StartCoroutine (SceneLoad (2.5f, nextStage));
->>>>>>> 709c0354b453595410290436fb52904eff8622ea
+			if (bom) {
+				Instantiate (ExploadObj, ExploadPos.transform.position, Quaternion.identity);
+				bom = false;
+			}
+			StartCoroutine (FadeDelay(3.0f, _fade.fadeStart));
+			StartCoroutine (SceneLoad (4.0f, nextStage));
 		}
 		if (collision.gameObject.name == "boss2") {
 
