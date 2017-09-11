@@ -7,6 +7,9 @@ public class Brave : MonoBehaviour {
 	[SerializeField] string nextStage;
 	[SerializeField] GameObject fade;
 
+	public GameObject ExploadObj;
+	public GameObject ExploadPos;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -19,6 +22,7 @@ public class Brave : MonoBehaviour {
 
 	void OnCollisionStay( Collision collision ) {
 		if (collision.gameObject.name == "boss") {
+			Instantiate (ExploadObj, ExploadPos.transform.position, Quaternion.identity);
 			fade.gameObject.SetActive (true);
 			StartCoroutine (SceneLoad (1.5f, nextStage));
 		}
