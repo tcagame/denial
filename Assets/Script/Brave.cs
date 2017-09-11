@@ -6,9 +6,13 @@ using UnityEngine.SceneManagement;
 public class Brave : MonoBehaviour {
 	[SerializeField] string nextStage;
 	[SerializeField] GameObject fade;
+	[SerializeField] GameObject boss;
 
 	public GameObject ExploadObj;
 	public GameObject ExploadPos;
+	public GameObject FireObj;
+	public GameObject FirePos;
+
 	Fade _fade;
 	bool bom = true;
 
@@ -19,16 +23,22 @@ public class Brave : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (!bom) {
+			StartCoroutine (FadeDelay(1.0f, _fade.fadeStart));
+			StartCoroutine (SceneLoad (4.0f, nextStage));
+		}
 	}
 
 	void OnCollisionStay( Collision collision ) {
 		if (collision.gameObject.name == "boss") {
 			if (bom) {
 				Instantiate (ExploadObj, ExploadPos.transform.position, Quaternion.identity);
+				Instantiate (FireObj, FirePos.transform.position, Quaternion.identity);
 				bom = false;
+				transform.position = new Vector3 (transform.position.x, transform.position.y, 100.0f);
+				boss.gameObject.SetActive (false);
 			}
-			StartCoroutine (FadeDelay(3.0f, _fade.fadeStart));
+			StartCoroutine (FadeDelay(1.0f, _fade.fadeStart));
 			StartCoroutine (SceneLoad (4.0f, nextStage));
 		}
 		if (collision.gameObject.name == "boss2") {
