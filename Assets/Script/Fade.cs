@@ -8,36 +8,36 @@ public class Fade : MonoBehaviour {
 	private Image image;
 	private Color alpha;
 	private float startTime;
-	private string fadeStart;
-	[SerializeField] string name;
+	[SerializeField] private string fadeStart;
+	//[SerializeField] string name;
 	[SerializeField] private float fadeTime;
 
 	// Use this for initialization
 	void Start () {
 		image = this.GetComponent<Image> ();
 		startTime = Time.time;
-		fadeStart = "FadeIn";
+		//fadeStart = "FadeIn";
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		switch (fadeStart) {
-		case "FadeIn":
+		case "fadein":
 			alpha.a = 1.0f - (Time.time - startTime) / fadeTime;
 			image.color = new Color (0, 0, 0, alpha.a);
 			Debug.Log (image.color.a);
 			break;
-		case "FadeOut":
+		case "fadeout":
 			alpha.a = (Time.time - startTime) / fadeTime;
 			image.color = new Color (0, 0, 0, alpha.a);
 			Debug.Log (image.color.a);
 			break;
 		}
-		if (image.color.a == 0) {
+		/*if (image.color.a == 0) {
 			SceneManager.LoadScene (name);
 			startTime = Time.time;
 			fadeStart = "FadeIn";
-		}
+		}*/
 	}
 		
 }

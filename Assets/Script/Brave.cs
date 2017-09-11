@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Brave : MonoBehaviour {
 	[SerializeField] string nextStage;
+	[SerializeField] GameObject fade;
 
 	// Use this for initialization
 	void Start () {
@@ -18,10 +19,18 @@ public class Brave : MonoBehaviour {
 
 	void OnCollisionStay( Collision collision ) {
 		if (collision.gameObject.name == "boss") {
-			SceneManager.LoadScene (nextStage);
+			fade.gameObject.SetActive (true);
+			StartCoroutine (SceneLoad (1.5f, nextStage));
 		}
 		if (collision.gameObject.name == "boss2") {
 			SceneManager.LoadScene ("StuffedRoll");
 		}
 	}
+
+	private IEnumerator SceneLoad( float time, string name ) {
+		yield return new WaitForSeconds (time);
+
+		SceneManager.LoadScene (name);
+	}
+		
 }
