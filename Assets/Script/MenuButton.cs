@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuButton : MonoBehaviour {
+	[SerializeField] string sceneName;
 
 	// Use this for initialization
 	void Start () {
@@ -16,7 +17,7 @@ public class MenuButton : MonoBehaviour {
 	}
 
 	public void PushStart() {
-		SceneManager.LoadScene ("Game");
+		SceneManager.LoadScene (sceneName);
 	}
 
 	public void PushBack() {
