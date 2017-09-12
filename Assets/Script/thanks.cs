@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class staff : MonoBehaviour {
+public class thanks : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -12,5 +12,9 @@ public class staff : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         transform.position += new Vector3(0.03f, 0.0f, 0.0f);
+        if (transform.position.x >= 0f)
+        {
+            transform.position = new Vector3(0f, transform.position.y, transform.position.z);
+        }
     }
 }
