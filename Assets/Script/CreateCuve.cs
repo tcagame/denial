@@ -19,10 +19,10 @@ public class CreateCuve : MonoBehaviour
 
     // Update is called once per frame
     void Update() { 
-		countDown -= Time.deltaTime;
-		countDown = Mathf.Max (countDown, 0, 0);
+		//countDown -= Time.deltaTime;
+		//countDown = Mathf.Max (countDown, 0, 0);
 
-		if (((int)countDown) <= 0) {
+		//if (((int)countDown) <= 0) {
 			RaycastHit hit = new RaycastHit();
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			if (!Physics.Raycast (ray, out hit)) {
@@ -34,7 +34,7 @@ public class CreateCuve : MonoBehaviour
 					// ScreenToWorldPoint(位置(Vector3))：スクリーン座標をワールド座標に変換する
 					cube = (GameObject)Resources.Load ("Prefab/BelconTest");
 					Instantiate (cube, Camera.main.ScreenToWorldPoint (clickPosition), cube.transform.rotation);
-				}
+				//}
 			}
 		}
     }
