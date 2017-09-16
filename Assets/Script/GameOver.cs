@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameOver : MonoBehaviour {
 	[SerializeField] GameObject result;
+	[SerializeField] GameObject BGM;
 
 	// Use this for initialization
 	void Start () {
@@ -13,6 +14,7 @@ public class GameOver : MonoBehaviour {
 	}
 	void OnTriggerEnter(Collider col) {
 		if (col.gameObject.tag == "Player") {
+			BGM.SetActive (false);
 			result.SetActive (true);
 		}
 	}

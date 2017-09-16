@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Retry : MonoBehaviour {
 	string scenename;
+	[SerializeField] GameObject se;
 
 	// Use this for initialization
 	void Start () {
@@ -17,13 +18,36 @@ public class Retry : MonoBehaviour {
 		
 	}
 
+
+
 	public void ContinueYes() {
 		scenename = SceneManager.GetActiveScene().name;
-		SceneManager.LoadScene (scenename);
+		StartCoroutine (DelaySE());
+
 	}
 
 	public void ContinueNo() {
+		
+		StartCoroutine (DelaySETitle());
+	}
+
+	public void PlaySE_touch () {
+		se.SetActive(true);
+	}
+
+	IEnumerator DelaySE() {
+		PlaySE_touch ();
+		Debug.Log ("a");
+		yield return new WaitForSeconds (1.5f);
+
+		SceneManager.LoadScene (scenename);
+	}
+
+	IEnumerator DelaySETitle() {
+		PlaySE_touch ();
+
+		yield return new WaitForSeconds (1.5f);
+
 		SceneManager.LoadScene ("Title");
 	}
-		
 }

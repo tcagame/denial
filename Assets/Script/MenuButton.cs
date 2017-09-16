@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuButton : MonoBehaviour {
 	[SerializeField] string sceneName;
+	[SerializeField] GameObject se;
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +18,8 @@ public class MenuButton : MonoBehaviour {
 	}
 
 	public void PushStart() {
+		PlaySE_touch ();
+		StartCoroutine (DelaySE());
 		SceneManager.LoadScene (sceneName);
 	}
 
@@ -26,5 +29,12 @@ public class MenuButton : MonoBehaviour {
 
 	public void PushOption() {
 
+	}
+	public void PlaySE_touch () {
+		se.SetActive(true);
+	}
+
+	IEnumerator DelaySE() {
+		yield return new WaitForSeconds (0.5f);
 	}
 }

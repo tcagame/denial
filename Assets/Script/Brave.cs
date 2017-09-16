@@ -16,6 +16,9 @@ public class Brave : MonoBehaviour {
 	Fade _fade;
 	bool bom = true;
 
+	public AudioClip audioClip;
+	AudioSource audioSource;
+
 	// Use this for initialization
 	void Start ( ) {
 		_fade = fade.gameObject.GetComponent<Fade> ();
@@ -31,6 +34,9 @@ public class Brave : MonoBehaviour {
 
 	void OnCollisionStay( Collision collision ) {
 		if (collision.gameObject.name == "boss") {
+			audioSource = gameObject.GetComponent<AudioSource>();
+			audioSource.clip = audioClip;
+			audioSource.Play();
 			if (bom) {
 				Instantiate (ExploadObj, ExploadPos.transform.position, Quaternion.identity);
 				Instantiate (FireObj, FirePos.transform.position, Quaternion.identity);
