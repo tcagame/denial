@@ -18,9 +18,9 @@ public class MenuButton : MonoBehaviour {
 	}
 
 	public void PushStart() {
-		PlaySE_touch ();
+		
 		StartCoroutine (DelaySE());
-		SceneManager.LoadScene (sceneName);
+
 	}
 
 	public void PushBack() {
@@ -35,6 +35,8 @@ public class MenuButton : MonoBehaviour {
 	}
 
 	IEnumerator DelaySE() {
-		yield return new WaitForSeconds (0.5f);
+		PlaySE_touch ();
+		yield return new WaitForSeconds (1.5f);
+		SceneManager.LoadScene (sceneName);
 	}
 }
