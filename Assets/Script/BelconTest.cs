@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BelconTest : MonoBehaviour {
+	
 	private GameObject brave;
 	private Vector3 m_mouseDownPosition;
 	bool click; 
@@ -11,6 +12,7 @@ public class BelconTest : MonoBehaviour {
 	float _time = 0f;
 	const float CLEATE_COUNT = 3.0f;
 	private float _count;
+
 	void Start ( ) {
 		m_mouseDownPosition = transform.position;
 		click = true;

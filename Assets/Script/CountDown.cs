@@ -8,6 +8,7 @@ public class CountDown : MonoBehaviour {
 	private float countDown;
 	[SerializeField] Text timeText;
 	[SerializeField] GameObject player;
+	[SerializeField] GameObject image;
 
 
 	// Use this for initialization
@@ -22,6 +23,11 @@ public class CountDown : MonoBehaviour {
 		timeText.text = ((int)countDown - 1).ToString();
 		if (((int)countDown) == (count - 1f)) {
 			player.SetActive (false);
+		}
+
+		if (((int)countDown) == (count - 3f)) {
+			image.SetActive (false);
+			timeText.gameObject.SetActive (true);
 		}
 
 		if (((int)countDown) == 1) {
