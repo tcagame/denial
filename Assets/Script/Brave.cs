@@ -17,7 +17,7 @@ public class Brave : MonoBehaviour {
 	bool bom = true;
 
 	public AudioClip audioClip;
-	AudioSource audioSource;
+	[SerializeField] GameObject se;
 
 	// Use this for initialization
 	void Start ( ) {
@@ -27,6 +27,7 @@ public class Brave : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (!bom) {
+			Debug.Log ("a");
 			StartCoroutine (FadeDelay(1.0f, _fade.fadeStart));
 			StartCoroutine (SceneLoad (4.0f, nextStage));
 		}
@@ -34,9 +35,8 @@ public class Brave : MonoBehaviour {
 
 	void OnCollisionStay( Collision collision ) {
 		if (collision.gameObject.name == "boss") {
-			audioSource = gameObject.GetComponent<AudioSource>();
-			audioSource.clip = audioClip;
-			audioSource.Play();
+			
+			se.SetActive (true);
 			if (bom) {
 				Instantiate (ExploadObj, ExploadPos.transform.position, Quaternion.identity);
 				Instantiate (FireObj, FirePos.transform.position, Quaternion.identity);
