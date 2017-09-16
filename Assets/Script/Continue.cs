@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Continue : MonoBehaviour {
+public class Contine : MonoBehaviour {
 	string scenename;
 	//[SerializeField] GameObject target;
 
@@ -19,18 +19,5 @@ public class Continue : MonoBehaviour {
 			SceneManager.LoadScene (scenename);
 		}
 	}
-
-	/*public void ContinueYes() {
-		scenename = SceneManager.GetActiveScene().name;
-		SceneManager.LoadScene (scenename);
-	}
-
-	public void ContinueNo() {
-		SceneManager.LoadScene ("Menu");
-	}
-
-	public void ContinueActive() {
-		this.gameObject.SetActive (false);
-		target.SetActive (true);
-	}*/
+		
 }
