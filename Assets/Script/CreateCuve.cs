@@ -7,7 +7,7 @@ public class CreateCuve : MonoBehaviour
     // クリックした位置座標
     private Vector3 clickPosition;
 	[SerializeField]private GameObject cube;
-	private const float count = 5;
+	private const float count = 7;
 	private float countDown;
 	[SerializeField] GameObject player;
 
