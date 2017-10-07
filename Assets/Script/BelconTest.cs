@@ -8,6 +8,7 @@ public class BelconTest : MonoBehaviour {
 	private Vector3 m_mouseDownPosition;
 	bool click; 
 	bool over_obj;
+	bool hitWall;
 	const float DESTROY_TIME = 8.0f;
 	float _time = 0f;
 	const float CLEATE_COUNT = 3.0f;
@@ -17,13 +18,14 @@ public class BelconTest : MonoBehaviour {
 		m_mouseDownPosition = transform.position;
 		click = true;
 		over_obj = false;
+		hitWall = false;
 		brave = GameObject.Find( "Brave" );
 	}
 
 	void Update( ) {
 		if ( click ) {
 			_count += 0.1f;
-			if ( Input.GetMouseButtonUp ( 0 ) || _count > CLEATE_COUNT || over_obj ) {
+			if ( Input.GetMouseButtonUp ( 0 ) || _count > CLEATE_COUNT || over_obj || hitWall ) {
 				click = false;
 			} else {
 				Vector3 inputPosition = new Vector3 ( Input.mousePosition.x, Input.mousePosition.y, 9.5f );
@@ -47,5 +49,10 @@ public class BelconTest : MonoBehaviour {
 			brave.transform.position = left;	
 		}
 		over_obj = true;
+	}
+	void OnTriggerEnter( Collider col ) {
+		if (col.gameObject.tag == "terrain") {
+			hitWall = true;
+		}
 	}
 }
