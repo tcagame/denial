@@ -7,6 +7,8 @@ public class Brave : MonoBehaviour {
 	[SerializeField] string nextStage;
 	[SerializeField] GameObject fade;
 	[SerializeField] GameObject boss;
+	[SerializeField] GameObject bgm;
+	[SerializeField] GameObject result;
 
 	public GameObject ExploadObj;
 	public GameObject ExploadPos;
@@ -35,7 +37,6 @@ public class Brave : MonoBehaviour {
 
 	void OnCollisionStay( Collision collision ) {
 		if (collision.gameObject.name == "boss") {
-			
 			se.SetActive (true);
 			if (bom) {
 				Instantiate (ExploadObj, ExploadPos.transform.position, Quaternion.identity);
@@ -53,6 +54,19 @@ public class Brave : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerStay( Collider col ) {
+		if ( col.gameObject.tag == "terrain" || col.gameObject.name == "GameOverArea" ) {
+			se.SetActive (true);
+			if (bom) {
+				Instantiate (ExploadObj, ExploadPos.transform.position, Quaternion.identity);
+				Instantiate (FireObj, FirePos.transform.position, Quaternion.identity);
+				//bom = false;
+				transform.position = new Vector3 (transform.position.x, transform.position.y, 100.0f);
+			}
+			StartCoroutine (GameOver(bgm, result));
+		}
+	}
+
 	private IEnumerator SceneLoad( float time, string name ) {
 		yield return new WaitForSeconds (time);
 
@@ -64,6 +78,13 @@ public class Brave : MonoBehaviour {
 
 		fade.gameObject.SetActive (true);
 		_fade.FadeSwitch (fadetype);
+	}
+
+	private IEnumerator GameOver( GameObject bgm, GameObject result ) {
+		yield return new WaitForSeconds( 3.0f );
+
+		bgm.SetActive (false);
+		result.SetActive (true);
 	}
 		
 }
