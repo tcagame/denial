@@ -7,26 +7,24 @@ public class CreateCuve : MonoBehaviour
     // クリックした位置座標
     private Vector3 clickPosition;
 	[SerializeField]private GameObject cube;
-	private const float count = 7;
-	private float countDown;
+	private bool gameStart;
 	[SerializeField] GameObject player;
 
     // Use this for initialization
     void Start()
     {
-		countDown = count;
+		gameStart = false;
     }
 
     // Update is called once per frame
     void Update() { 
-		countDown -= Time.deltaTime;
-		countDown = Mathf.Max (countDown, 0, 0);
+
 		//Physics.SphereCast(Ray ray, ①float radius, out RaycastHit hit, float maxDistance, int layerMask)
-		if (((int)countDown) <= 0) {
+		if (gameStart) {
 			clickPosition = Input.mousePosition;
 			RaycastHit hit = new RaycastHit();
 			Ray ray = Camera.main.ScreenPointToRay(clickPosition);
-			if (!Physics.SphereCast (ray, 0.7f, out hit)) {
+			if (!Physics.SphereCast (ray, 0.5f, out hit)) {
 				if (Input.GetMouseButtonDown (0)) {
 					
 					// Z軸修正
@@ -37,6 +35,9 @@ public class CreateCuve : MonoBehaviour
 					Instantiate (cube, Camera.main.ScreenToWorldPoint (clickPosition), cube.transform.rotation);
 				}
 			}
+		}
+		if (Input.GetMouseButtonDown (0)) {
+			gameStart = true;
 		}
     }
 }

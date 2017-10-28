@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class CountDown : MonoBehaviour {
-	[SerializeField] float count;
+	const float count = 3;
 	private float countDown;
-	[SerializeField] Text timeText;
+	[SerializeField] Text waitText;
 	[SerializeField] GameObject player;
 	[SerializeField] GameObject image;
 
@@ -20,21 +20,17 @@ public class CountDown : MonoBehaviour {
 	void Update () {
 		countDown -= Time.deltaTime;
 		countDown = Mathf.Max (countDown, 0, 0);
-		timeText.text = ((int)countDown - 1).ToString();
+		waitText.text = "Tap To Start";
 		if (((int)countDown) == (count - 1f)) {
 			player.SetActive (false);
 		}
 
 		if (((int)countDown) == (count - 3f)) {
 			image.SetActive (false);
-			timeText.gameObject.SetActive (true);
+			waitText.gameObject.SetActive (true);
 		}
 
-		if (((int)countDown) == 1) {
-			timeText.text = "START";
-		}
-
-		if (((int)countDown) <= 0) {
+		if (Input.GetMouseButtonDown(0)) {
 			player.SetActive (true);
 			this.gameObject.SetActive (false);
 		}
