@@ -82,9 +82,6 @@ public class Brave : MonoBehaviour {
 
 	private IEnumerator GameOver( GameObject bgm, GameObject result ) {
 		yield return new WaitForSeconds( 3.0f );
-
-		bgm.SetActive (false);
-		result.SetActive (true);
 	}
 		
 }
