@@ -8,7 +8,6 @@ public class firstBelcon : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		brave = GameObject.Find( "Brave" );
-		Debug.Log (brave);
 	}
 	
 	// Update is called once per frame

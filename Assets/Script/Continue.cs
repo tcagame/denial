@@ -4,20 +4,26 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Contine : MonoBehaviour {
+public class Continue : MonoBehaviour {
+	
 	string scenename;
+	SceneTest _sceneTest;
 	//[SerializeField] GameObject target;
 
 	void Start () {
-		
+		_sceneTest = GameObject.Find ("nowScene").GetComponent<SceneTest> ();
+		scenename = scenename;
+		Debug.Log (scenename);
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetMouseButtonDown (0)) {
-			scenename = SceneManager.GetActiveScene ().name;
-			SceneManager.LoadScene (scenename);
-		}
+		
 	}
+
+	public void pushContinue() {
+		
+		SceneManager.LoadScene (scenename);
+		}
 		
 }

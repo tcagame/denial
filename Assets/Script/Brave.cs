@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class Brave : MonoBehaviour {
 	[SerializeField] string nextStage;
+	string gameOver = "Gameover";
+	public string reTryScene; 
+
 	[SerializeField] GameObject fade;
 	[SerializeField] GameObject boss;
 	[SerializeField] GameObject bgm;
@@ -24,15 +27,20 @@ public class Brave : MonoBehaviour {
 	// Use this for initialization
 	void Start ( ) {
 		_fade = fade.gameObject.GetComponent<Fade> ();
+		reTryScene = SceneManager.GetActiveScene ().name;
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (!bom) {
-			Debug.Log ("a");
-			StartCoroutine (FadeDelay(1.0f, _fade.fadeStart));
-			StartCoroutine (SceneLoad (4.0f, nextStage));
-		}
+		//if (!bom) {
+		//	StartCoroutine (FadeDelay(1.0f, _fade.fadeStart));
+		//	StartCoroutine (SceneLoad (4.0f, nextStage));
+		//}
+	}
+
+	public string getReTryScene( ) {
+		return reTryScene;
 	}
 
 	void OnCollisionStay( Collision collision ) {
@@ -48,10 +56,6 @@ public class Brave : MonoBehaviour {
 			StartCoroutine (FadeDelay(1.0f, _fade.fadeStart));
 			StartCoroutine (SceneLoad (4.0f, nextStage));
 		}
-		if (collision.gameObject.name == "boss2") {
-
-            SceneManager.LoadScene ("StuffedRoll");
-		}
 	}
 
 	void OnTriggerStay( Collider col ) {
@@ -60,10 +64,12 @@ public class Brave : MonoBehaviour {
 			if (bom) {
 				Instantiate (ExploadObj, ExploadPos.transform.position, Quaternion.identity);
 				Instantiate (FireObj, FirePos.transform.position, Quaternion.identity);
-				//bom = false;
+				bom = false;
 				transform.position = new Vector3 (transform.position.x, transform.position.y, 100.0f);
 			}
-			StartCoroutine (GameOver(bgm, result));
+			StartCoroutine (FadeDelay(1.0f, _fade.fadeStart));
+			StartCoroutine (SceneLoad (4.0f, gameOver));
+			//StartCoroutine (GameOver(bgm, result));
 		}
 	}
 

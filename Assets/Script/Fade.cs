@@ -38,8 +38,8 @@ public class Fade : MonoBehaviour {
 			break;
 		case "fadeout":
 			alpha.a = (Time.time - startTime) / fadeTime;
-			image.color = new Color (0, 0, 0, alpha.a);
-			Debug.Log (image.color.a);
+			//image.color = new Color (0, 0, 0, alpha.a);
+			//Debug.Log (image.color.a);
 			break;
 		}
 	}
