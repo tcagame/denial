@@ -12,7 +12,7 @@ public class Continue : MonoBehaviour {
 
 	void Start () {
 		_sceneTest = GameObject.Find ("nowScene").GetComponent<SceneTest> ();
-		scenename = scenename;
+		scenename = _sceneTest.scenename;
 		Debug.Log (scenename);
 	}
 
@@ -22,8 +22,10 @@ public class Continue : MonoBehaviour {
 	}
 
 	public void pushContinue() {
-		
 		SceneManager.LoadScene (scenename);
-		}
-		
+	}
+
+	public void pushTitle () {
+		SceneManager.LoadScene ("Title");
+	}
 }
