@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Brave : MonoBehaviour {
 	[SerializeField] string nextStage;
 	string gameOver = "Gameover";
-	public string reTryScene; 
 
 	[SerializeField] GameObject fade;
 	[SerializeField] GameObject boss;
@@ -24,10 +24,12 @@ public class Brave : MonoBehaviour {
 	public AudioClip audioClip;
 	[SerializeField] GameObject se;
 
+	SpriteRenderer spriteRenderer;
+
 	// Use this for initialization
 	void Start ( ) {
 		_fade = fade.gameObject.GetComponent<Fade> ();
-		reTryScene = SceneManager.GetActiveScene ().name;
+		spriteRenderer = GetComponent<SpriteRenderer>();
 
 	}
 	
@@ -39,10 +41,6 @@ public class Brave : MonoBehaviour {
 		//}
 	}
 
-	public string getReTryScene( ) {
-		return reTryScene;
-	}
-
 	void OnCollisionStay( Collision collision ) {
 		if (collision.gameObject.name == "boss") {
 			se.SetActive (true);
@@ -51,6 +49,7 @@ public class Brave : MonoBehaviour {
 				Instantiate (FireObj, FirePos.transform.position, Quaternion.identity);
 				bom = false;
 				transform.position = new Vector3 (transform.position.x, transform.position.y, 100.0f);
+				spriteRenderer.color = new Color (0, 0, 0, 0.0f);
 				boss.gameObject.SetActive (false);
 			}
 			StartCoroutine (FadeDelay(1.0f, _fade.fadeStart));
@@ -66,6 +65,7 @@ public class Brave : MonoBehaviour {
 				Instantiate (FireObj, FirePos.transform.position, Quaternion.identity);
 				bom = false;
 				transform.position = new Vector3 (transform.position.x, transform.position.y, 100.0f);
+				spriteRenderer.color = new Color (0, 0, 0, 0.0f);
 			}
 			StartCoroutine (FadeDelay(1.0f, _fade.fadeStart));
 			StartCoroutine (SceneLoad (4.0f, gameOver));
@@ -89,5 +89,4 @@ public class Brave : MonoBehaviour {
 	private IEnumerator GameOver( GameObject bgm, GameObject result ) {
 		yield return new WaitForSeconds( 3.0f );
 	}
-		
 }
